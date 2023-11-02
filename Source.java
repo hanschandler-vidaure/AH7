@@ -7,11 +7,12 @@ class Node<T> {
     this.next = null;
   }
 }
-
 class Source {
   public static int sumList(Node<Integer> head) {
-    // todo
-    return;
+    int sum = 0;
+    for (Node<Integer> node = head; node != null; node = node.next)
+      sum += node.val;
+    return sum;
   }
 
   public static void main(String[] args) {
@@ -30,5 +31,17 @@ class Source {
     
     System.out.println("Sum of my list: ");
     System.out.println(Source.sumList(a));
+
+    Node<Integer> head = new Node<>(0);
+    Node<Integer> node = new Node<>(1);
+    head.next = node;
+    for (int i = 2; i<=100; i++)
+    {
+      node.next = new Node<>(i);
+      node = node.next;
+    }
+
+    System.out.println("Sum of my list: ");
+    System.out.println(Source.sumList(head));
   }
 }
